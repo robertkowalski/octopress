@@ -14,17 +14,12 @@
             width = 65,
             index;
 
-        if (options.textmode) {
-          for (index in badges) {
-            fragment += '<li>' + badges[index].name + '<p>' + badges[index].description + '</p></li>';
-          }
-        } else {
-          for (index in badges) {
-            fragment += '<a class="cw_badge"title="' + badges[index].description + '" href="http://coderwall.com/' + options.user + '">';
-            fragment +=   '<img alt="' + badges[index].description + '" height="' + width + '" width="' + height + '" src="' + badges[index].badge + '"/>';
-            fragment += '</a>';
-          }
+        for (index in badges) {
+          fragment += '<a class="cw_badge"title="' + badges[index].description + '" href="http://coderwall.com/' + options.user + '">';
+          fragment +=   '<img alt="' + badges[index].description + '" height="' + width + '" width="' + height + '" src="' + badges[index].badge + '"/>';
+          fragment += '</a>';
         }
+
         t.innerHTML = fragment;
       }
       return {
@@ -59,8 +54,7 @@
       }
       coderwall.showBadges({
         user: '{{site.coderwall_user}}',
-        target: '#cw_badges',
-        textmode: {{site.coderwall_textmode}}
+        target: '#cw_badges'
       });
     });
   </script>
